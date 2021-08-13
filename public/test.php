@@ -12,9 +12,17 @@
 </head>
 <body>
     <h1>Kookcupid 222</h1>
+    <?php
+        echo "<h1>KOOKCUPID</h1>";
+        echo "kook<br>";
+        echo "<b>Natthapon Auttama</b>";
+        print("kookcupid<br> print");
+    ?>
 
-    {{ 'test blade template' }}
-
+    <h2>Header 2</h2>
+    <?php
+        echo 1+2;
+    ?>
     <form action="">
         <label for="">ชื่อ</label>
         <input type="text" name="" id="" value="<?php echo "กุ๊ก" ;?>">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\TestViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,20 @@ use App\Http\Controllers\admin\AdminController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/about', [HomeController::class, 'about']);
-Route::get('/hello', [HomeController::class, 'index2']);
-Route::get('/admin', [AdminController::class, 'index']);
+
+Route::get('/hello', function () {
+    return view('testview');
+});
+
+Route::get('/contact', [TestViewController::class, 'viewpage']);
+Route::post('/getdata', [TestViewController::class, 'getdata']);
+
+
+// Route::get('/', [HomeController::class, 'index']);
+// Route::get('/about', [HomeController::class, 'about']);
+// Route::get('/hello', [HomeController::class, 'index2']);
+// Route::get('/admin', [AdminController::class, 'index']);
