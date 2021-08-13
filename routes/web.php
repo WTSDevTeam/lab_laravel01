@@ -28,6 +28,7 @@ Route::get('/hello', function () {
 Route::get('/contact', [TestViewController::class, 'viewpage']);
 Route::post('/getdata', [TestViewController::class, 'getdata']);
 
+Route::get('/about', [TestViewController::class, 'about']);
 
 // Route::get('/', [HomeController::class, 'index']);
 // Route::get('/about', [HomeController::class, 'about']);

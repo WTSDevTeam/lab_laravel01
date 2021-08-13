@@ -12,7 +12,10 @@
 </head>
 <body>
     <h1>{{ $title_name }}</h1>
-    
+    @if (1=1)
+        <h1>{{ $title_name }}</h1>
+    @endif
+
     <form action="{{URL::to('getdata')}}" method="POST">
         @csrf
         <label for="">ชื่อ</label>

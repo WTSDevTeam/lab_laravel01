@@ -39,4 +39,9 @@ class TestViewController extends Controller
             "sur_name" => $request->get('suname'),
         ));
     }
+
+    public function about() {
+
+    }
+
 }
