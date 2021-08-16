@@ -24,6 +24,8 @@ Route::post('/getdata', [TestViewController::class, 'getdata']);
 Route::get('/about', [TestViewController::class, 'about']);
 
 Route::get('/kook/home', [TestViewController::class, 'home2']);
+//Route::get('/kook/about', [HomeController::class, 'about']);
+//Route::get('/kook/contact', [HomeController::class, 'contact']);
 
 
 // Route::get('/', [HomeController::class, 'index']);

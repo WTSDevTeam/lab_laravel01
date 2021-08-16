@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,14 +14,7 @@ class HomeController extends Controller
 
     public function index() {
 
-        return view('welcome2', array(
-            "title_name" => $this->title,
-            "title_name1" => $this->title1,
-            "title_name2" => $this->title2,
-            "title_name3" => $this->title3,
-        ));
     }
-
     public function about() {
         return view('about', array(
             "title_name" => $this->title,
@@ -29,6 +22,25 @@ class HomeController extends Controller
             "title_name2" => $this->title2,
             "title_name3" => $this->title3,
         ));
+    }
+
+    public function contact() {
+
+        $product_data = product::where('branch_id', '=', '002')
+        ->get();
+
+        return view('contact', array(
+            "title_name" => '',
+            "title_name2" => '',
+            "loop_value" => '',
+            "name" => '',
+            "sur_name" => '',
+            "data" => $product_data,
+            
+        ));
+    }     
+    public function home2() {
+        return view('kook.home');
     }
 
 }
