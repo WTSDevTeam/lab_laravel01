@@ -2,11 +2,13 @@
 
 @section('section1')
 
-    <h1>{{ $title_name }}</h1>
-    @if (1==1)
-        <h1>{{ $title_name }}</h1>
-    @endif
+    @foreach($data as $item)
+        <p>
+            {{$item->id}} : {{$item->product_code}} : {{$item->product_name}}
+        </p>
+    @endforeach
 
+    {{-- 
     <form action="{{URL::to('getdata')}}" method="POST">
         @csrf
         <label for="">ชื่อ</label>
@@ -19,8 +21,6 @@
         <input type="text" name="age" id="age" value="">
         <button type="button" onclick="hello();">button 1</button>
         <button>submit</button>
-    </form>
-
-    <h3>contact email : test@gmail.com</h3>
+    </form> --}}
 
 @endsection

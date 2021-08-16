@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\product;
 
 class TestViewController extends Controller
 {
@@ -31,19 +32,21 @@ class TestViewController extends Controller
     public function getdata(Request $request) {
         $Input = $request->input();
 
-        return view('testview', array(
-            "title_name" => 'post data -> ' . $request->get('txtname') . ' : ' . $request->get('surname'),
-            "title_name2" => '',
-            "loop_value" => '',
-            "name" => $request->get('txtname'),
-            "sur_name" => $request->get('suname'),
-        ));
+        dd($Input);
+        
+        // return view('testview', array(
+        //     "title_name" => 'post data -> ' . $request->get('txtname') . ' : ' . $request->get('surname'),
+        //     "title_name2" => '',
+        //     "loop_value" => '',
+        //     "name" => $request->get('txtname'),
+        //     "sur_name" => $request->get('suname'),
+        // ));
     }
 
     public function about() {
         // $Input = $request->input();
 
-        return view('testview', array(
+        return view('about', array(
             "title_name" => '',
             "title_name2" => '',
             "loop_value" => '',
@@ -54,12 +57,16 @@ class TestViewController extends Controller
 
     public function contact() {
 
+        $product_data = product::all();
+
         return view('contact', array(
             "title_name" => '',
             "title_name2" => '',
             "loop_value" => '',
             "name" => '',
             "sur_name" => '',
+            "data" => $product_data,
+            
         ));
     }
 

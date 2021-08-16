@@ -1,15 +1,19 @@
 
-@extends('master.layout.main')
+@extends('layouts.master')
 
-@section('content2')
+@section('section2')
     @for ($i = 0; $i < 10; $i++)
         The current value is {{ $i }}<br>
     @endfor
-    <a href="/">home</a>
+    <a class='footer' href="/">section 2</a>
+
+    
 @endsection
 
 
-@section('content')
-    <h1>about</h1>
-    <a href="/">home</a>
+@section('section1')
+    <h1>section 1</h1>
+    <a class='footer' href="/">home</a>
+    <br>
+    <br>
 @endsection

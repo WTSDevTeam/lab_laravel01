@@ -1,10 +1,9 @@
-
     <script type="text/javascript" src="/asset/js/jquery.js"></script>
     <script type="text/javascript" src="/asset/script.js"></script>
 
     <script>
         $(document).ready(function() {
-            console.log('jquery ทำงานแล้ว');
+            console.log('jquery is work');
         });
 
         function hello() {
