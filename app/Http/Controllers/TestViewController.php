@@ -72,7 +72,50 @@ class TestViewController extends Controller
     }
 
     public function home2() {
-        return view('kook.home');
+
+        $product_data = product::all();
+
+        return view('kook.home', array(
+            "data" => $product_data
+        ));
     }
+
+    public function product() {
+
+        $product_data = product::all();
+
+        return view('kook.product.index', array(
+            "data" => $product_data
+        ));
+    }
+
+    public function edit_product($id) {
+        
+        //dd($id);
+
+        return view('kook.product.update');
+
+    }
+
+    public function add_product(Request $request) {
+
+        $Input = $request->input();
+
+        $save_data = new product();
+        
+        $save_data->product_code = $request->get('code');
+        $save_data->product_name = $request->get('name');
+        
+        $save_data->save();
+        
+        $product_data = product::all();
+
+        return view('kook.product.index', array(
+            "data" => $product_data
+        ));
+
+    }
+
+    
 
 }
