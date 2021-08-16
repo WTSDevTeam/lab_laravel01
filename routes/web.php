@@ -16,16 +16,9 @@ use App\Http\Controllers\TestViewController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [TestViewController::class, 'about']);
 
-
-Route::get('/hello', function () {
-    return view('testview');
-});
-
-Route::get('/contact', [TestViewController::class, 'viewpage']);
+Route::get('/contact', [TestViewController::class, 'contact']);
 Route::post('/getdata', [TestViewController::class, 'getdata']);
 
 Route::get('/about', [TestViewController::class, 'about']);

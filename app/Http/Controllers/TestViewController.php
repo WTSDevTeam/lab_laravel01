@@ -41,14 +41,25 @@ class TestViewController extends Controller
     }
 
     public function about() {
-        $Input = $request->input();
+        // $Input = $request->input();
 
         return view('testview', array(
-            "title_name" => 'post data -> ' . $request->get('txtname') . ' : ' . $request->get('surname'),
+            "title_name" => '',
             "title_name2" => '',
             "loop_value" => '',
-            "name" => $request->get('txtname'),
-            "sur_name" => $request->get('suname'),
+            "name" => '',
+            "sur_name" => '',
+        ));
+    }
+
+    public function contact() {
+
+        return view('contact', array(
+            "title_name" => '',
+            "title_name2" => '',
+            "loop_value" => '',
+            "name" => '',
+            "sur_name" => '',
         ));
     }
 
