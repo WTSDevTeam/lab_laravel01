@@ -57,7 +57,8 @@ class TestViewController extends Controller
 
     public function contact() {
 
-        $product_data = product::all();
+        $product_data = product::where('branch_id', '=', '002')
+        ->get();
 
         return view('contact', array(
             "title_name" => '',
@@ -68,6 +69,10 @@ class TestViewController extends Controller
             "data" => $product_data,
             
         ));
+    }
+
+    public function home2() {
+        return view('kook.home');
     }
 
 }
