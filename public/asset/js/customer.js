@@ -6,7 +6,23 @@ $(document).ready(function() {
 });
 
   function initEvent() {
-    
+
+
+    $('#info').hide();
+
+    $('#qty').blur(function() {
+      var qty = $('#qty').val();
+
+      if (parseFloat(qty) < 0) {
+        $('#info').show();
+      }
+      else {
+        $('#info').hide();
+      }
+
+      console.log(qty);
+    });
+
     $('#code').focus(function() {
       console.log('code focus');
     });

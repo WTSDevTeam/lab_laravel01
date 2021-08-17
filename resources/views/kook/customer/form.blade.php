@@ -10,7 +10,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          
+          <div id="info" class="alert alert-warning" role="alert">
+            จำนวนที่จอง ต้องมากกว่า 0
+          </div>
+
           <div class="row">
             <div class="col-6">
               <label  for="inputAddress2" class="form-label">รหัสลูกค้า</label>
@@ -26,6 +29,13 @@
             <div class="col-12">
               <label for="inputAddress2" class="form-label">ที่อยู่</label>
               <textarea rows="4" class="form-control" name="address" id="address" placeholder="กรอกที่อยู่ลูกค้า"></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <label class="form-label">จำนวนที่จอง</label>
+              <input type="number" class="form-control" name="qty" id="qty" value=0>
             </div>
           </div>
 
