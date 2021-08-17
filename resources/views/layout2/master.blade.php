@@ -9,6 +9,11 @@
 
     @include('layout2.footer')
 
+    <div id="load" class="spinner-border text-primary" role="status" style="visibility: hidden">
+        <span class="sr-only"></span>
+    </div>
+
     @include('layout2.pagescript')
+
 </body>
 </html>

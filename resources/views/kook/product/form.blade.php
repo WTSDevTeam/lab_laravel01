@@ -11,19 +11,22 @@
         <div class="modal-body">
           
           <div class="py-12">
-              @csrf   
+              @csrf
               <label for="">รหัสสินค้า</label>
               <input type="text" name="code" id="code" value="">
               <br>
               <label for="">ชื่อสินค้า</label>
               <input type="text" name="name" id="name" value="">
-              <br>
-        </div>
+
+              <input type="hidden" name="edit_id" id="edit_id" value="">
+              <input type="hidden" name="edit_mode" id="edit_mode" value="">
+
+          </div>
         
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" id='save' class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
