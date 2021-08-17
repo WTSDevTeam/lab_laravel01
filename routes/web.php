@@ -26,12 +26,11 @@ Route::get('/about', [TestViewController::class, 'about']);
 Route::get('/kook/home', [TestViewController::class, 'home2']);
 
 Route::get('/kook/product', [TestViewController::class, 'product']);
-Route::get('/kook/product/edit/{id}', [TestViewController::class, 'edit_product']);
 Route::post('/product/add', [TestViewController::class, 'add_product']);
+Route::get('/kook/product/edit/{id}', [TestViewController::class, 'edit_product']);
+Route::post('/kook/product/update/{id}', [TestViewController::class, 'update_product']);
+Route::get('/kook/product/softdelete/{id}', [TestViewController::class, 'update_product']);
 
-
-//Route::get('/kook/about', [HomeController::class, 'about']);
-//Route::get('/kook/contact', [HomeController::class, 'contact']);
 
 
 // Route::get('/', [HomeController::class, 'index']);

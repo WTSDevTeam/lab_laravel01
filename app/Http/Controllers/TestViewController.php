@@ -90,10 +90,13 @@ class TestViewController extends Controller
     }
 
     public function edit_product($id) {
-        
+        $product_update = Product::find($id);
         //dd($id);
+        return view('kook.product.edit');
+    }
 
-        return view('kook.product.update');
+    public function update(Request $request ,$id){
+        dd($id);
 
     }
 

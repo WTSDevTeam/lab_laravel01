@@ -1,5 +1,6 @@
 @extends('layout2.master')
-<h1>BBMY   Digital Marketing</h1>
+
+<h1>BBMY Digital Marketing</h1>
 
 <div class="py-12">
   <div class="container">
@@ -25,4 +26,6 @@
       </div>
   </div>
 </div>
+@include('kook.product.form')
+
 
