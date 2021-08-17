@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+
 use App\Models\product;
 
 class TestViewController extends Controller
@@ -113,9 +115,12 @@ class TestViewController extends Controller
         
         $product_data = product::all();
 
-        return view('kook.product.index', array(
-            "data" => $product_data
-        ));
+        // return view('kook.product.index', array(
+        //     "data" => $product_data
+        // ));
+
+        return redirect(URL::to('/kook/product'));
+
 
     }
 
