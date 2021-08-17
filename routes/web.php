@@ -36,12 +36,12 @@ Route::get('/kook/product/get/{id}', [ProductController::class, 'get_product']);
 Route::get('/kook/product/delete/{id}', [ProductController::class, 'delete_product']);
 
 // costomer
-Route::get('/kook/costomer', [CustomerController::class, 'costomer']);
-Route::post('/costomer/add', [CustomerController::class, 'add_costomer']);
-Route::get('/kook/costomer/edit/{id}', [CustomerController::class, 'edit_costomer']);
-Route::post('/kook/costomer/update/{id}', [CustomerController::class, 'update_costomer']);
-Route::get('/kook/costomer/get/{id}', [CustomerController::class, 'get_costomer']);
-Route::get('/kook/costomer/delete/{id}', [CustomerController::class, 'delete_costomer']);
+Route::get('/kook/customer', [CustomerController::class, 'customer']);
+Route::post('/customer/add', [CustomerController::class, 'add_customer']);
+Route::get('/kook/customer/edit/{id}', [CustomerController::class, 'edit_customer']);
+Route::post('/kook/customer/update/{id}', [CustomerController::class, 'update_customer']);
+Route::get('/kook/customer/get/{id}', [CustomerController::class, 'get_customer']);
+Route::get('/kook/customer/delete/{id}', [CustomerController::class, 'delete_customer']);
 //
 
 // Route::get('/', [HomeController::class, 'index']);
