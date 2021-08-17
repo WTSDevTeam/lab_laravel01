@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\TestViewController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,14 @@ Route::post('/kook/product/update/{id}', [ProductController::class, 'update_prod
 Route::get('/kook/product/get/{id}', [ProductController::class, 'get_product']);
 Route::get('/kook/product/delete/{id}', [ProductController::class, 'delete_product']);
 
-Route::get('/kook/product/softdelete/{id}', [ProductController::class, 'update_product']);
-
-
+// costomer
+Route::get('/kook/costomer', [CustomerController::class, 'costomer']);
+Route::post('/costomer/add', [CustomerController::class, 'add_costomer']);
+Route::get('/kook/costomer/edit/{id}', [CustomerController::class, 'edit_costomer']);
+Route::post('/kook/costomer/update/{id}', [CustomerController::class, 'update_costomer']);
+Route::get('/kook/costomer/get/{id}', [CustomerController::class, 'get_costomer']);
+Route::get('/kook/costomer/delete/{id}', [CustomerController::class, 'delete_costomer']);
+//
 
 // Route::get('/', [HomeController::class, 'index']);
 // Route::get('/about', [HomeController::class, 'about']);

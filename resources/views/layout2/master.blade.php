@@ -3,6 +3,7 @@
 @include('layout2.header')
 
 <body>  
+
     @include('layout2.menu')
     
     @yield('content')

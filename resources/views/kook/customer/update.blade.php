@@ -1,4 +1,6 @@
 @extends('layout2.master')
-<h1>update สินค้า</h1>
+<h1>เพิ่มข้อมูลลูกค้า</h1>
 
 @include('kook.customer.form')
+
+
