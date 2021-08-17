@@ -54,6 +54,7 @@ Route::group(['prefix' => 'kook'], function () {
         Route::post('/update/{id}', [CustomerController::class, 'update_customer']);
         Route::get('/get/{id}', [CustomerController::class, 'get_customer']);
         Route::get('/delete/{id}', [CustomerController::class, 'delete_customer']);
+        Route::get('/listall', [CustomerController::class, 'listData']);
         
     });
 

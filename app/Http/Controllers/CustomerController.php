@@ -28,6 +28,28 @@ class CustomerController extends Controller
         ));
     }
 
+
+    public function listData() {
+
+        $brow_item = customer::all();
+
+        $data = new \stdClass();
+        $data->data = array();
+        foreach($brow_item as $item) {
+            $data->data[] = array(
+                $item->id,
+                $item->customer_code,
+                $item->customer_name,
+                $item->address,
+                '<a href="javascript:edit('.$item->id.');" class="btn btn-primary">แก้ไข</a>',
+                '<a href="javascript:confirm_deldata('.$item->id.');" class="btn btn-danger">ลบข้อมูล</a>'
+            );
+
+        }
+
+        echo json_encode($data);
+    }
+
     public function edit_customer($id) {
         $customer_update = customer::find($id);
         //dd($id);

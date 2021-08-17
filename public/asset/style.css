@@ -38,10 +38,11 @@ h3 {
     position: fixed;
     overflow: hidden;
     top: 0;
-    width: 100%;...
+    width: 100%;
 }    
 
 #footer {
+    position:fixed;
     background-color:black;
     font-size:15px;
     text-align: center;  
