@@ -84,6 +84,7 @@ class CustomerController extends Controller
         if (isset($save_data)) {
             $save_data->customer_code = $request->get('code');
             $save_data->customer_name = $request->get('name');
+            $save_data->address = $request->get('address');
             
             $save_data->save();
         }

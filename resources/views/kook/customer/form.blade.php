@@ -12,17 +12,18 @@
           
           <div class="py-12">
               @csrf
-              <label for="">รหัสสินค้า</label>
-              <input type="text" name="code" id="code" value="">
+              <label  for="inputAddress2" class="form-label">รหัสลูกค้า</label>
+              <input type="text" class="form-control" name="code" id="code" value="" placeholder="กรอกรหัสลูกค้า">
               <br>
-              <label for="">ชื่อสินค้า</label>
-              <input type="text" name="name" id="name" value="">
-
+              <label  for="inputAddress2" class="form-label">ชื่อลูกค้า</label>
+              <input type="text" class="form-control" name="name" id="name" value="" placeholder="กรอกชื่อลูกค้า">
+              <br>
+              <div class="col-12">
+              <label for="inputAddress2" class="form-label">ที่อยู่</label>
+              <input type="text" class="form-control" name="name" id="address" placeholder="กรอกที่อยู่ลูกค้า">
+              </div>
               <input type="hidden" name="edit_id" id="edit_id" value="">
-              <input type="hidden" name="edit_mode" id="edit_mode" value="">
-
-          </div>
-        
+              <input type="hidden" name="edit_mode" id="edit_mode" value="">    
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

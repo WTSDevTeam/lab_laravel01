@@ -2,7 +2,7 @@
 
 @section('content')
     
-  <h1>หน้าสินค้า</h1>
+  <h1>หน้าลูกค้า</h1>
 
   <div class="py-12">
     
@@ -12,11 +12,12 @@
 
   <div class="container">
     <div class="row">
-      <table id='myTable' class="table table-dark table-hover">
+      <table id='myTable' class="table table-striped table-hover">
         <thead>
           <tr>
             <th>อันดับ</th>
-            <th>ชื่อลูกค้า</th>
+            <th>รหัสลูกค้า</th>
+            <th>ชื่อ</th>
             <th>ที่อยู่</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -28,6 +29,7 @@
             <td>{{$item->id}}</td>
             <td>{{$item->customer_code}}</td>
             <td>{{$item->customer_name}}</td>
+            <td>{{$item->address}}</td>
             <td><a href="javascript:edit({{$item->id}});" class="btn btn-primary">แก้ไข</a></td>
             <td><a href="javascript:confirm_deldata({{$item->id}});" class="btn btn-danger">ลบข้อมูล</a></td>
           </tr>
@@ -55,7 +57,7 @@
       $('#edit_mode').val('insert');
 
       blankform();
-      $('#exampleModalLabel').text('เพิ่มสินค้า');
+      $('#exampleModalLabel').text('เพิ่มข้อมูลลูกค้า');
       $('#exampleModal').modal('show');
 
     }
@@ -71,7 +73,7 @@
 
       blankform();
 
-      $('#exampleModalLabel').text('แก้ไขสินค้า');
+      $('#exampleModalLabel').text('แก้ไขข้อมูลลูกค้า');
       $('#exampleModal').modal('show');
 
       $.ajax({
@@ -91,6 +93,7 @@
           
           $('#code').val(callback.data.customer_code);
           $('#name').val(callback.data.customer_name);
+          $('#address').val(callback.data.address);
 
           $('#save').show();
 
@@ -141,6 +144,7 @@
     function blankform() {
       $('#code').val('');
       $('#name').val('');
+      $('#address').val('');
     }
 
   </script>
