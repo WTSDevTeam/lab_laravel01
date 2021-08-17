@@ -20,7 +20,7 @@
               <br>
               <div class="col-12">
               <label for="inputAddress2" class="form-label">ที่อยู่</label>
-              <input type="text" class="form-control" name="name" id="address" placeholder="กรอกที่อยู่ลูกค้า">
+              <input type="text" class="form-control" name="address" id="address" placeholder="กรอกที่อยู่ลูกค้า">
               </div>
               <input type="hidden" name="edit_id" id="edit_id" value="">
               <input type="hidden" name="edit_mode" id="edit_mode" value="">    
