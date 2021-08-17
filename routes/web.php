@@ -25,26 +25,36 @@ Route::post('/getdata', [TestViewController::class, 'getdata']);
 
 Route::get('/about', [TestViewController::class, 'about']);
 
-Route::get('/kook/home', [TestViewController::class, 'home2']);
 
-Route::get('/kook/product', [ProductController::class, 'product']);
-Route::post('/product/add', [ProductController::class, 'add_product']);
-Route::get('/kook/product/edit/{id}', [ProductController::class, 'edit_product']);
-Route::post('/kook/product/update/{id}', [ProductController::class, 'update_product']);
+Route::group(['prefix' => 'kook'], function () {
 
-Route::get('/kook/product/get/{id}', [ProductController::class, 'get_product']);
-Route::get('/kook/product/delete/{id}', [ProductController::class, 'delete_product']);
+    Route::get('/', [TestViewController::class, 'home2']);
+    Route::get('/home', [TestViewController::class, 'home2']);
 
-// costomer
-Route::get('/kook/customer', [CustomerController::class, 'customer']);
-Route::post('/customer/add', [CustomerController::class, 'add_customer']);
-Route::get('/kook/customer/edit/{id}', [CustomerController::class, 'edit_customer']);
-Route::post('/kook/customer/update/{id}', [CustomerController::class, 'update_customer']);
-Route::get('/kook/customer/get/{id}', [CustomerController::class, 'get_customer']);
-Route::get('/kook/customer/delete/{id}', [CustomerController::class, 'delete_customer']);
-//
+    //product
+    Route::group(['prefix' => 'product'], function () {
 
-// Route::get('/', [HomeController::class, 'index']);
-// Route::get('/about', [HomeController::class, 'about']);
-// Route::get('/hello', [HomeController::class, 'index2']);
-// Route::get('/admin', [AdminController::class, 'index']);
+        Route::get('/', [ProductController::class, 'product']);
+        Route::post('add', [ProductController::class, 'add_product']);
+        Route::get('edit/{id}', [ProductController::class, 'edit_product']);
+        Route::post('update/{id}', [ProductController::class, 'update_product']);
+    
+        Route::get('get/{id}', [ProductController::class, 'get_product']);
+        Route::get('delete/{id}', [ProductController::class, 'delete_product']);
+    
+    });
+
+
+    // costomer
+    Route::group(['prefix' => 'customer'], function () {
+
+        Route::get('/', [CustomerController::class, 'customer']);
+        Route::post('/add', [CustomerController::class, 'add_customer']);
+        Route::get('/edit/{id}', [CustomerController::class, 'edit_customer']);
+        Route::post('/update/{id}', [CustomerController::class, 'update_customer']);
+        Route::get('/get/{id}', [CustomerController::class, 'get_customer']);
+        Route::get('/delete/{id}', [CustomerController::class, 'delete_customer']);
+        
+    });
+
+});
