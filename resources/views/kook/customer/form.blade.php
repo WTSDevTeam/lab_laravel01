@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
           <div id="info" class="alert alert-warning" role="alert">
-          กรุณาจองสินค้ามากกว่า 20 ชิ้น
+          <p id="pinfo">กรุณาจองสินค้ามากกว่า 20 ชิ้น</p>
           </div>
 
           <div class="row">
@@ -30,15 +30,30 @@
               <textarea rows="4" class="form-control" name="address" id="address" placeholder="กรอกที่อยู่ลูกค้า"></textarea>
             </div>
           </div>
-    
+
+          <div class="row">
+            <div class="col-8">
+              {{-- <label  for="inputAddress2" class="form-label">รหัสสินค้า</label>
+              <input type="text" class="form-control" name="p_code" id="p_code" value="" placeholder="รหัสสินค้า"> --}}
+              <label for="exampleFormControlSelect1">รหัสสินค้า</label>
+              <select class="form-control" id="option_product">
+                @if (isset($product_data))
+                  @foreach($product_data as $item)
+                  <option value="{{$item->product_code}}">{{$item->product_name .' - '.$item->product_code}}</option>
+                  @endforeach
+                @endif
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="form-label">สต๊อค</label>
+              <input type="text" class="form-control" name="stock_qty" id="stock_qty" value="" readonly>
+            </div>
+
+          </div>
           <div class="row">
             <div class="col-6">
               <label class="form-label">จำนวนที่จอง</label>
               <input type="number" class="form-control" name="qty" id="qty" value="">
-            </div>
-            <div class="col-6">
-              <label  for="inputAddress2" class="form-label">รหัสสินค้า</label>
-              <input type="text" class="form-control" name="p_code" id="p_code" value="" placeholder="รหัสสินค้า">
             </div>
           </div>
 

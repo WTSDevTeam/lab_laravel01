@@ -10,14 +10,41 @@ $(document).ready(function() {
 
     $('#info').hide();
 
+    
+    $('#p_code').blur(function() {
+      var p_code = $('#p_code').val();
+
+      fn_getStockQty(p_code);
+      console.log(p_code);
+
+    });
+
+    $('#option_product').change(function() {
+      var p_code = $('#option_product').val();
+      fn_getStockQty(p_code);
+      console.log(p_code);
+    });
+    
+    
+
     $('#qty').blur(function() {
       var qty = $('#qty').val();
+      console.log(qty);
 
-      if (parseFloat(qty) < 1) {
+      let stock_qty = $('#stock_qty').val();
+
+      
+      $('#pinfo').text('กรุณาจองสินค้ามากกว่า '+stock_qty+' ชิ้น');
+
+      if (parseFloat(qty) > stock_qty) {
+
         $('#info').show();
+        $('#save').prop('disabled', true);
+
       }
       else {
         $('#info').hide();
+        $('#save').prop('disabled', false);
       }
 
       console.log(qty);
@@ -144,6 +171,25 @@ $(document).ready(function() {
     });
 
 
+  }
+
+  function fn_getStockQty(code) {
+    
+    $.ajax({
+      type: "POST",
+      dataType: 'json',
+      url: "/kook/product/getstock",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+        code: code
+      },
+      success: function(callback) {
+        console.log(callback);
+        $('#stock_qty').val(callback.stock_qty);
+      },
+    });
   }
 
   function confirm_deldata(id) {

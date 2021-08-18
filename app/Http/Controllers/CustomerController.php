@@ -23,9 +23,11 @@ class CustomerController extends Controller
     public function customer() {
 
         $customer_data = customer::all();
+        $product_data = product::all();
 
         return view('kook.customer.index', array(
-            "data" => $customer_data
+            "data" => $customer_data,
+            "product_data" => $product_data,
         ));
     }
 

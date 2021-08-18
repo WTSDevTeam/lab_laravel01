@@ -35,11 +35,16 @@ $(document).ready(function() {
       add();
     });
 
-    $('#Form1').submit(function() {
-        console.log('on submit...');
-        window.scrollTo(0, 0);
-        fn_form_validate();
+    
+    $('#save').click(function() {
+      fn_save();
     });
+
+    // $('#Form1').submit(function() {
+    //     console.log('on submit...');
+    //     window.scrollTo(0, 0);
+    //     fn_form_validate();
+    // });
 
     fn_init_datatable();
 
@@ -190,4 +195,62 @@ $(document).ready(function() {
     $('#p_code').val('');
     $('#name').val('');
     $('#qty').val('');
+  }
+
+  function fn_save() {
+
+    let p_code = $('#p_code').val();
+    let name = $('#name').val();
+    let qty = $('#qty').val();
+
+    error_msg = '';
+    if (p_code == '') {
+      error_msg = 'กรุณาใส่รหัสสินค้า';
+    } else if (name == '') {
+      error_msg = 'กรุณาใส่ชื่อสินค้า';
+    } else if (qty == '') {
+      error_msg = 'กรุณาใส่จำนวนสินค้า';
+    }
+
+    if (error_msg != '') {
+      swal({
+        title: "",
+        text: error_msg,
+        icon: "error",
+      });
+    }
+    else {
+      $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: "/kook/product/store",
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+          //data: new FormData(form),
+          edit_id: $('#edit_id').val(),
+          edit_mode: $('#edit_mode').val(),
+          code: $('#p_code').val(),
+          name: $('#name').val(),
+          stock: $('#qty').val(),
+        },
+        // contentType: false,
+        // cache: false,
+        // processData:false,
+        success: function(callback) {
+          console.log(callback);
+  
+          $('#exampleModal').modal('hide');
+  
+          var table = $('#myTable').DataTable();
+          table.ajax.reload();
+  
+  
+        },
+      });
+
+    }
+
+
   }

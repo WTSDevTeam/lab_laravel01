@@ -121,5 +121,95 @@ class ProductController extends Controller
     }
 
     
+    public function getstock(Request $request) {
+
+        $request->get('code');
+        $stock = product::where('product_code', '=', $request->get('code'))->get();
+        $stock_qty = 0;
+
+        if (isset($stock) && count($stock) > 0) {
+            $stock_qty = $stock[0]->stock_qty;
+        }
+
+        $response = array(
+            'status' => '00',
+            'msg' => 'complete',
+            'code' => $request->get('code'),
+            'stock_qty' => $stock_qty,
+        );
+
+        echo json_encode($response);
+    }
+
+    
+    public function store(Request $request) {
+
+        $edit_id = $request->get('edit_id');
+        $edit_mode = $request->get('edit_mode');
+        $code = $request->get('code');
+        $name = $request->get('name');
+        $stock = $request->get('stock');
+
+        if ($edit_mode == 'insert')
+        {
+            $save_data = new product();
+        }
+        else {
+            $save_data = Product::find($edit_id);
+        }
+
+        if (isset($save_data)) {
+            $save_data->product_code = $code;
+            $save_data->product_name = $name;
+            $save_data->stock_qty = floatval($stock);
+            $save_data->save();
+        }
+
+        $product_data = product::all();
+
+        $response = array(
+            'status' => '00',
+            'msg' => 'complete',
+            'product_name' => $name,
+        );
+        echo json_encode($response);
+
+    }
+    
+
+    public function api_product() {
+
+        $product_data = product::all();
+
+        $response = array(
+            'status' => '00',
+            'msg' => 'complete',
+            'data' => $product_data,
+        );
+        echo json_encode($response);
+    }
+
+    
+    public function api_product_id($id) {
+
+        $product_data = product::where('product_code', '=', $id)->get();
+
+        if (isset($product_data) && count($product_data) > 0)
+        {
+            $response = array(
+                'status' => '00',
+                'msg' => 'complete',
+                'data' => $product_data,
+            );
+        } else { 
+            $response = array(
+                'status' => '-1',
+                'msg' => 'not found data',
+                'data' => null,
+            );
+    
+        }
+        echo json_encode($response);
+    }
 
 }

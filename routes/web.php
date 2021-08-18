@@ -25,6 +25,8 @@ Route::post('/getdata', [TestViewController::class, 'getdata']);
 
 Route::get('/about', [TestViewController::class, 'about']);
 
+Route::get('/api/product', [ProductController::class, 'api_product']);
+Route::get('/api/product/{id}', [ProductController::class, 'api_product_id']);
 
 Route::group(['prefix' => 'kook'], function () {
 
@@ -41,6 +43,10 @@ Route::group(['prefix' => 'kook'], function () {
         Route::get('get/{id}', [ProductController::class, 'get_product']);
         Route::get('delete/{id}', [ProductController::class, 'delete_product']);
         Route::get('/listall', [ProductController::class, 'listData']);
+
+        Route::post('/getstock', [ProductController::class, 'getstock']);
+        Route::post('/store', [ProductController::class, 'store']);
+        
     
     });
 
@@ -57,5 +63,6 @@ Route::group(['prefix' => 'kook'], function () {
         Route::get('/listall', [CustomerController::class, 'listData']);
         
     });
+
 
 });
