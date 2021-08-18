@@ -1,4 +1,3 @@
-
 <!-- Modal -->
 <form id="Form1" action="{{URL::to('/kook/customer/add')}}" method="POST">
   @csrf
@@ -6,7 +5,7 @@
     <div class="modal-dialog  modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">เพิ่มสินค้า</h5>
+          <h5 class="modal-title" id="exampleModalLabel">เพิ่มชื่อลูกค้า</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -50,6 +49,5 @@
       </div>
     </div>
   </div>
-
 </form>
 

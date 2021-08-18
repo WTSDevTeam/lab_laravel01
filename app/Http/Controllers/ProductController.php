@@ -28,6 +28,26 @@ class ProductController extends Controller
         ));
     }
 
+    public function listData() {
+
+        $brow_item = product::all();
+
+        $data = new \stdClass();
+        $data->data = array();
+        foreach($brow_item as $item) {
+            $data->data[] = array(
+                $item->id,
+                $item->product_code,
+                $item->product_name,
+                '<a href="javascript:edit('.$item->id.');" class="btn btn-primary">แก้ไข</a>',
+                '<a href="javascript:confirm_deldata('.$item->id.');" class="btn btn-danger">ลบข้อมูล</a>'
+            );
+
+        }
+
+        echo json_encode($data);
+    }
+
     public function edit_product($id) {
         $product_update = Product::find($id);
         //dd($id);

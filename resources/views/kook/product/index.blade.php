@@ -4,15 +4,13 @@
     
   <h1>หน้าสินค้า</h1>
 
-  <div class="py-12">
-    
-    <button type="button" onclick="add();" class="btn btn-primary">
-      เพิ่มข้อมูล
-    </button>
+  <button type="button" id="add" class="btn btn-primary">
+    เพิ่มข้อมูล
+  </button>
 
   <div class="container">
     <div class="row">
-      <table id='myTable' class="table table-dark table-hover">
+      <table id='myTable' class="table table-striped table-hover">
         <thead>
           <tr>
             <th>อันดับ</th>
@@ -23,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($data as $item)
+          {{-- @foreach($data as $item)
           <tr>
             <td>{{$item->id}}</td>
             <td>{{$item->product_code}}</td>
@@ -31,7 +29,7 @@
             <td><a href="javascript:edit({{$item->id}});" class="btn btn-primary">แก้ไข</a></td>
             <td><a href="javascript:confirm_deldata({{$item->id}});" class="btn btn-danger">ลบข้อมูล</a></td>
           </tr>
-        @endforeach
+          @endforeach --}}
         </tbody>
       </table>
     </div>
@@ -44,105 +42,8 @@
 
 @section('page-script')
 
-  <script>
-
-    $(document).ready(function() {
-      $('#myTable').DataTable();
-    });
-    
-    function add() {
-
-      $('#edit_mode').val('insert');
-
-      blankform();
-      $('#exampleModalLabel').text('เพิ่มสินค้า');
-      $('#exampleModal').modal('show');
-
-    }
-    
-    function edit(id) {
-
-
-      $('#edit_mode').val('edit');
-      $('#edit_id').val(id);
-
-      $('#load').css('visibility', 'show');
-      $('#save').hide();
-
-      blankform();
-
-      $('#exampleModalLabel').text('แก้ไขสินค้า');
-      $('#exampleModal').modal('show');
-
-      $.ajax({
-        type: "GET",
-        dataType: 'json',
-        url: "{{URL::to('/kook/product/get')}}" + "/" + id,
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(callback) {
-          
-          // $('#load').hide();
-          $('#load').css('visibility', 'hidden');
-
-          console.log(callback.data.product_code);
-          console.log(callback.data.product_name);
-          
-          $('#code').val(callback.data.product_code);
-          $('#name').val(callback.data.product_name);
-
-          $('#save').show();
-
-    
-        },
-      });
-
-
-    }
-
-    function confirm_deldata(id) {
-
-      swal({
-        title: "Are you sure",
-        text: "ยืนยันการลบข้อมูล ?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-        })
-        .then((willDelete) => {
-          if (willDelete) {
-            //swal("Poof! Your imaginary file has been deleted!", {icon: "success",});
-            deldata(id);
-        } else {
-          //swal("Your imaginary file is safe!");
-        }
-      });
-
-    }
-
-    function deldata(id) {
-      
-      $.ajax({
-        type: "GET",
-        dataType: 'json',
-        url: "{{URL::to('/kook/product/delete')}}" + "/" + id,
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(callback) {
-          console.log(callback);
-          location.reload();
-        },
-      });
-
-    }
-    
-    function blankform() {
-      $('#code').val('');
-      $('#name').val('');
-    }
-
-  </script>
+  <script type="text/javascript" src="{{asset('/asset/js/product.js')}}"></script>
 
 @endsection
+
+

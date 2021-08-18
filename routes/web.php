@@ -38,9 +38,9 @@ Route::group(['prefix' => 'kook'], function () {
         Route::post('add', [ProductController::class, 'add_product']);
         Route::get('edit/{id}', [ProductController::class, 'edit_product']);
         Route::post('update/{id}', [ProductController::class, 'update_product']);
-    
         Route::get('get/{id}', [ProductController::class, 'get_product']);
         Route::get('delete/{id}', [ProductController::class, 'delete_product']);
+        Route::get('/listall', [ProductController::class, 'listData']);
     
     });
 

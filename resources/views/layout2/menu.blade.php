@@ -21,12 +21,3 @@
       </form>
   </div>
 </nav>
-
-
-<!-- <div id='' class=''>
-<a href="{{URL::to('/kook/home')}}">home</a>
-<a href="{{URL::to('/kook/about')}}">about</a>
-<a href="{{URL::to('/kook/contact')}}">contact</a>
-<a href="{{URL::to('/kook/product')}}">สินค้า</a>
-<a href="{{URL::to('/kook/customer')}}">ลูกค้า</a>
-</div> -->
