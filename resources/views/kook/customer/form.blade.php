@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
           <div id="info" class="alert alert-warning" role="alert">
-            จำนวนที่จอง ต้องมากกว่า 0
+          กรุณาจองสินค้ามากกว่า 20 ชิ้น
           </div>
 
           <div class="row">
@@ -30,24 +30,31 @@
               <textarea rows="4" class="form-control" name="address" id="address" placeholder="กรอกที่อยู่ลูกค้า"></textarea>
             </div>
           </div>
-
+    
           <div class="row">
             <div class="col-6">
               <label class="form-label">จำนวนที่จอง</label>
-              <input type="number" class="form-control" name="qty" id="qty" value=0>
+              <input type="number" class="form-control" name="qty" id="qty" value="">
+            </div>
+            <div class="col-6">
+              <label  for="inputAddress2" class="form-label">รหัสสินค้า</label>
+              <input type="text" class="form-control" name="p_code" id="p_code" value="" placeholder="รหัสสินค้า">
             </div>
           </div>
 
           <div>
-          <input type="hidden" name="edit_id" id="edit_id" value="">
-          <input type="hidden" name="edit_mode" id="edit_mode" value="">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" id='save' class="btn btn-primary">Save</button>
+            <input type="hidden" name="edit_id" id="edit_id" value="">
+            <input type="hidden" name="edit_mode" id="edit_mode" value="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" id='save' class="btn btn-primary">Save</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </form>
+
+
 

@@ -16,6 +16,7 @@
             <th>อันดับ</th>
             <th>รหัสสินค้า</th>
             <th>ชื่อสินค้า</th>
+            <th>สินค้าคงเหลือ</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -26,6 +27,7 @@
             <td>{{$item->id}}</td>
             <td>{{$item->product_code}}</td>
             <td>{{$item->product_name}}</td>
+            <td>{{$item->stock_qty}}</td>
             <td><a href="javascript:edit({{$item->id}});" class="btn btn-primary">แก้ไข</a></td>
             <td><a href="javascript:confirm_deldata({{$item->id}});" class="btn btn-danger">ลบข้อมูล</a></td>
           </tr>

@@ -6,6 +6,7 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+
 @yield('page-script')
 
 <script>

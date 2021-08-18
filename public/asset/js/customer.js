@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('#qty').blur(function() {
       var qty = $('#qty').val();
 
-      if (parseFloat(qty) < 0) {
+      if (parseFloat(qty) < 1) {
         $('#info').show();
       }
       else {
@@ -70,12 +70,15 @@ $(document).ready(function() {
   function fn_form_validate() {
     let code = $('#code').val();
     let name = $('#name').val();
+    let address = $('#address').val();
 
     error_msg = '';
     if (code == '') {
       error_msg = 'กรุณาใส่รหัสลูกค้า';
     } else if (name == '') {
       error_msg = 'กรุณาใส่ชื่อลูกค้า';
+    } else if (address == '') {
+      error_msg = 'กรุณาใส่ที่อยู่';
     }
 
     if (error_msg != '') {
@@ -128,6 +131,7 @@ $(document).ready(function() {
 
         console.log(callback.data.customer_code);
         console.log(callback.data.customer_name);
+        console.log(callback.data.customer_address);
         
         $('#code').val(callback.data.customer_code);
         $('#name').val(callback.data.customer_name);
@@ -186,4 +190,5 @@ $(document).ready(function() {
     $('#code').val('');
     $('#name').val('');
     $('#address').val('');
+    
   }

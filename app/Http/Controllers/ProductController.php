@@ -39,6 +39,7 @@ class ProductController extends Controller
                 $item->id,
                 $item->product_code,
                 $item->product_name,
+                $item->stock_qty,
                 '<a href="javascript:edit('.$item->id.');" class="btn btn-primary">แก้ไข</a>',
                 '<a href="javascript:confirm_deldata('.$item->id.');" class="btn btn-danger">ลบข้อมูล</a>'
             );
@@ -102,9 +103,9 @@ class ProductController extends Controller
         }
 
         if (isset($save_data)) {
-            $save_data->product_code = $request->get('code');
+            $save_data->product_code = $request->get('p_code');
             $save_data->product_name = $request->get('name');
-            
+            $save_data->stock_qty = $request->get('qty');
             $save_data->save();
         }
 

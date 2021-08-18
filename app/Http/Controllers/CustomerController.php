@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
 use App\Models\customer;
+use App\Models\product;
 
 class CustomerController extends Controller
 {

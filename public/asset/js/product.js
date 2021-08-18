@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('#qty').blur(function() {
       var qty = $('#qty').val();
 
-      if (parseFloat(qty) < 0) {
+      if (parseFloat(qty) < 1) {
         $('#info').show();
       }
       else {
@@ -59,22 +59,26 @@ $(document).ready(function() {
               {"targets": 0,"orderable": true},
               {"targets": 1,"orderable": true},
               {"targets": 2,"orderable": true},
-              {"targets": 3,"orderable": false},
-              {"targets": 4,"orderable": false},        
+              {"targets": 3,"orderable": true},
+              {"targets": 4,"orderable": false},       
+              {"targets": 5,"orderable": false}, 
           ],
           "order": [[ 2, "asc" ]],
     });
   }
 
   function fn_form_validate() {
-    let code = $('#code').val();
+    let p_code = $('#p_code').val();
     let name = $('#name').val();
+    let qty = $('#qty').val();
 
     error_msg = '';
-    if (code == '') {
+    if (p_code == '') {
       error_msg = 'กรุณาใส่รหัสสินค้า';
     } else if (name == '') {
       error_msg = 'กรุณาใส่ชื่อสินค้า';
+    } else if (qty == '') {
+      error_msg = 'กรุณาใส่จำนวนสินค้า';
     }
 
     if (error_msg != '') {
@@ -127,9 +131,11 @@ $(document).ready(function() {
 
         console.log(callback.data.product_code);
         console.log(callback.data.product_name);
+        console.log(callback.data.stock_qty);
         
-        $('#code').val(callback.data.product_code);
+        $('#p_code').val(callback.data.product_code);
         $('#name').val(callback.data.product_name);
+        $('#qty').val(callback.data.stock_qty);
 
         $('#save').show();
 
@@ -181,6 +187,7 @@ $(document).ready(function() {
   }
   
   function fn_blankform() {
-    $('#code').val('');
+    $('#p_code').val('');
     $('#name').val('');
+    $('#qty').val('');
   }

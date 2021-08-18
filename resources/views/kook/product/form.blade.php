@@ -10,13 +10,13 @@
         </div>
         <div class="modal-body">
           <div id="info" class="alert alert-warning" role="alert">
-            จำนวนที่จอง ต้องมากกว่า 0
+            ใส่จำนวนสินค้ามากกว่า 0 ชิ้น
           </div>
 
           <div class="row">
             <div class="col-6">
               <label  for="inputAddress2" class="form-label">รหัสสินค้า</label>
-              <input type="text" class="form-control" name="code" id="code" value="" placeholder="กรอกรหัสสินค้า">
+              <input type="text" class="form-control" name="p_code" id="p_code" value="" placeholder="กรอกรหัสสินค้า">
             </div>
             <div class="col-6">
               <label  for="inputAddress2" class="form-label">ชื่อสินค้า</label>
@@ -26,8 +26,8 @@
 
           <div class="row">
             <div class="col-6">
-              <label class="form-label">จำนวนที่จอง</label>
-              <input type="number" class="form-control" name="qty" id="qty" value=0>
+              <label  for="inputAddress2" class="form-label">สินค้าคงเหลือ</label>
+              <input type="number" class="form-control" name="qty" id="qty" value="">
             </div>
           </div>
 
