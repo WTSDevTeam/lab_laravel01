@@ -61,6 +61,9 @@ Route::group(['prefix' => 'kook'], function () {
         Route::get('/get/{id}', [CustomerController::class, 'get_customer']);
         Route::get('/delete/{id}', [CustomerController::class, 'delete_customer']);
         Route::get('/listall', [CustomerController::class, 'listData']);
+
+        Route::post('/getstock', [CustomerController::class, 'getstock']);
+        Route::post('/store', [CustomerController::class, 'store']);
         
     });
 

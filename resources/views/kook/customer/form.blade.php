@@ -1,5 +1,5 @@
 <!-- Modal -->
-<form id="Form1" action="{{URL::to('/kook/customer/add')}}" method="POST">
+<form id="Form1">
   @csrf
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-lg">
@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
           <div id="info" class="alert alert-warning" role="alert">
-          <p id="pinfo">กรุณาจองสินค้ามากกว่า 20 ชิ้น</p>
+          <p id="pinfo">--</p>
           </div>
 
           <div class="row">
@@ -63,7 +63,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" id='save' class="btn btn-primary">Save</button>
+            <button type="button" id='save' class="btn btn-primary">Save</button>
           </div>
         </div>
       </div>

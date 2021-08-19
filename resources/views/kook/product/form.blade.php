@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
           <div id="info" class="alert alert-warning" role="alert">
-            ใส่จำนวนสินค้ามากกว่า 0 ชิ้น
+          <p id="pinfo">กรุณาจองสินค้ามากกว่า 20 ชิ้น</p>
           </div>
 
           <div class="row">

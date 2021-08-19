@@ -110,7 +110,6 @@ class CustomerController extends Controller
             $save_data->customer_code = $request->get('code');
             $save_data->customer_name = $request->get('name');
             $save_data->address = $request->get('address');
-            
             $save_data->save();
         }
 
@@ -125,6 +124,95 @@ class CustomerController extends Controller
 
     }
 
+    public function getstock(Request $request) {
+
+        $request->get('code');
+        $stock = product::where('product_code', '=', $request->get('code'))->get();
+        $stock_qty = 0;
+
+        if (isset($stock) && count($stock) > 0) {
+            $stock_qty = $stock[0]->stock_qty;
+        }
+
+        $response = array(
+            'status' => '00',
+            'msg' => 'complete',
+            'code' => $request->get('code'),
+            'stock_qty' => $stock_qty,
+        );
+
+        echo json_encode($response);
+    }
+
     
+    public function store(Request $request) {
+
+        $edit_id = $request->get('edit_id');
+        $edit_mode = $request->get('edit_mode');
+        $code = $request->get('code');
+        $name = $request->get('name');
+        $address = $request->get('address');
+
+        if ($edit_mode == 'insert')
+        {
+            $save_data = new customer();
+        }
+        else {
+            $save_data = customer::find($edit_id);
+        }
+
+        if (isset($save_data)) {
+            $save_data->customer_code = $code;
+            $save_data->customer_name = $name;
+            $save_data->address = $address;
+            $save_data->save();
+        }
+
+        $customer_data = customer::all();
+
+        $response = array(
+            'status' => '00',
+            'msg' => 'complete',
+            'customer_name' => $name,
+        );
+        echo json_encode($response);
+
+
+
+    }
+    public function api_customer() {
+
+        $customer_data = customer::all();
+
+        $response = array(
+            'status' => '00',
+            'msg' => 'complete',
+            'data' => $customer_data,
+        );
+        echo json_encode($response);
+    }
+
+    
+    public function api_customer_id($id) {
+
+        $customer_data = customer::where('customer_code', '=', $id)->get();
+
+        if (isset($customer_data) && count($customer_data) > 0)
+        {
+            $response = array(
+                'status' => '00',
+                'msg' => 'complete',
+                'data' => $customer_data,
+            );
+        } else { 
+            $response = array(
+                'status' => '-1',
+                'msg' => 'not found data',
+                'data' => null,
+            );
+    
+        }
+        echo json_encode($response);
+    }
 
 }
