@@ -245,6 +245,9 @@ $(document).ready(function() {
 
   function fn_save() {
 
+
+    var post_data = $('#Form1').serializeArray();
+    
     let code = $('#code').val();
     let name = $('#name').val();
     let address = $('#address').val();

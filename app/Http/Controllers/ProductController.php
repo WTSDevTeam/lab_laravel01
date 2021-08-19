@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\customer;
 use App\Models\product;
@@ -145,14 +146,15 @@ class ProductController extends Controller
     
     public function store(Request $request) {
 
-        $edit_id = $request->get('edit_id');
-        $edit_mode = $request->get('edit_mode');
-        $code = $request->get('code');
-        $name = $request->get('name');
-        $stock = $request->get('stock');
+        $input = $this->decodeFormArray($request->input('data'));
 
-        if ($edit_mode == 'insert')
-        {
+        $edit_id = $input['edit_id'];
+        $edit_mode = $input['edit_mode'];
+        $code = $input['p_code'];
+        $name = $input['name'];
+        $stock = $input['qty'];
+
+        if ($edit_mode == 'insert') {
             $save_data = new product();
         }
         else {
@@ -166,21 +168,37 @@ class ProductController extends Controller
             $save_data->save();
         }
 
-        $product_data = product::all();
-
         $response = array(
             'status' => '00',
             'msg' => 'complete',
-            'product_name' => $name,
         );
         echo json_encode($response);
 
     }
-    
+
+   public function decodeFormArray($form) {
+        $data = array();
+        foreach ($form as $key => $val) {
+            $data[$val['name']] = $val['value'];
+        }
+        return $data;
+    }
 
     public function api_product() {
 
-        $product_data = product::all();
+        
+        
+        //$product_data = product::all();
+
+        // $product_data = DB::table('product')
+        //     ->where('stock_qty', '>', 1000)
+        //     ->select('product_code as code','product_name as name','stock_qty as qty')
+        //     ->get();
+
+        $product_data = DB::table('order as ord')
+            ->leftJoin('customer as cus', 'cus.id', '=', 'ord.customer_id')
+            ->select('ord.order_id' ,'ord.order_no','ord.order_date' ,'ord.customer_id','cus.customer_code','cus.customer_name' )
+            ->get();
 
         $response = array(
             'status' => '00',

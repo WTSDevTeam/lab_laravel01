@@ -184,7 +184,7 @@ $(document).ready(function() {
         console.log(callback);
         //location.reload();
         var table = $('#myTable').DataTable();
-        table.ajax.reload();
+        table.ajax.reload(null,false);
 
       },
     });
@@ -198,6 +198,10 @@ $(document).ready(function() {
   }
 
   function fn_save() {
+
+    //var form1 = document.getElementById("Form1");
+    var post_data = $('#Form1').serializeArray();
+    //var post_data = $('#Form1').serialize();
 
     let p_code = $('#p_code').val();
     let name = $('#name').val();
@@ -228,12 +232,12 @@ $(document).ready(function() {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         data: {
-          //data: new FormData(form),
-          edit_id: $('#edit_id').val(),
-          edit_mode: $('#edit_mode').val(),
-          code: $('#p_code').val(),
-          name: $('#name').val(),
-          stock: $('#qty').val(),
+          data: post_data,
+          // edit_id: $('#edit_id').val(),
+          // edit_mode: $('#edit_mode').val(),
+          // code: $('#p_code').val(),
+          // name: $('#name').val(),
+          // stock: $('#qty').val(),
         },
         // contentType: false,
         // cache: false,
@@ -244,7 +248,7 @@ $(document).ready(function() {
           $('#exampleModal').modal('hide');
   
           var table = $('#myTable').DataTable();
-          table.ajax.reload();
+          table.ajax.reload(null, false);
   
   
         },
