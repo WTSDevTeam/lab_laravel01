@@ -28,6 +28,9 @@ Route::get('/about', [TestViewController::class, 'about']);
 Route::get('/api/product', [ProductController::class, 'api_product']);
 Route::get('/api/product/{id}', [ProductController::class, 'api_product_id']);
 
+Route::get('/api/customer', [CustomerController::class, 'api_customer']);
+Route::get('/api/customer/{id}', [CustomerController::class, 'api_customer_id']);
+
 Route::group(['prefix' => 'kook'], function () {
 
     Route::get('/', [TestViewController::class, 'home2']);
