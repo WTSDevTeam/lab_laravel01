@@ -143,7 +143,6 @@ class ProductController extends Controller
         echo json_encode($response);
     }
 
-    
     public function store(Request $request) {
 
         $input = $this->decodeFormArray($request->input('data'));
