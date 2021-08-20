@@ -144,17 +144,17 @@ class CustomerController extends Controller
         echo json_encode($response);
     }
 
-    
     public function store(Request $request) {
 
-        $edit_id = $request->get('edit_id');
-        $edit_mode = $request->get('edit_mode');
-        $code = $request->get('code');
-        $name = $request->get('name');
-        $address = $request->get('address');
+        $input = $this->decodeFormArray($request->input('data'));
 
-        if ($edit_mode == 'insert')
-        {
+        $edit_id = $input['edit_id'];
+        $edit_mode = $input['edit_mode'];
+        $code = $input['code'];
+        $name = $input['name'];
+        $address = $input['address'];
+
+        if ($edit_mode == 'insert') {
             $save_data = new customer();
         }
         else {
@@ -168,8 +168,7 @@ class CustomerController extends Controller
             $save_data->save();
         }
 
-        $customer_data = customer::all();
-
+       
         $response = array(
             'status' => '00',
             'msg' => 'complete',
@@ -177,9 +176,17 @@ class CustomerController extends Controller
         );
         echo json_encode($response);
 
-
-
     }
+
+   public function decodeFormArray($form) {
+        $data = array();
+        foreach ($form as $key => $val) {
+            $data[$val['name']] = $val['value'];
+        }
+        return $data;
+    }
+
+
     public function api_customer() {
 
         $customer_data = customer::all();

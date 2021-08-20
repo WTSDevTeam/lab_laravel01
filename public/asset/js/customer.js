@@ -229,7 +229,7 @@ $(document).ready(function() {
         console.log(callback);
         //location.reload();
         var table = $('#myTable').DataTable();
-        table.ajax.reload();
+        table.ajax.reload(null,false);
 
       },
     });
@@ -277,12 +277,13 @@ $(document).ready(function() {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         data: {
+          data: post_data,
           //data: new FormData(form),
-          edit_id: $('#edit_id').val(),
-          edit_mode: $('#edit_mode').val(),
-          code: $('#code').val(),
-          name: $('#name').val(),
-          address: $('#address').val(),
+          // edit_id: $('#edit_id').val(),
+          // edit_mode: $('#edit_mode').val(),
+          // code: $('#code').val(),
+          // name: $('#name').val(),
+          // address: $('#address').val(),
         },
         // contentType: false,
         // cache: false,
@@ -293,7 +294,7 @@ $(document).ready(function() {
           $('#exampleModal').modal('hide');
   
           var table = $('#myTable').DataTable();
-          table.ajax.reload();
+          table.ajax.reload(null, false);
   
   
         },
